@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Details</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h5 class="text-center mt-5">
+        Complete the payment for your order, through the below button.
+    </h5>
+    
+      <div class="d-flex justify-content-center">
+       <a href="https://invoices.razorpay.com/v1/t/inv_EzJpNqe7RffhwC" target="blank" >
+           <button
+          onclick="submission()"
+          type="submit"
+          id="payment"
+          class="btn btn-lg btn-outline-success"
+        >
+          Pay Here
+        </button> </a>
+      </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js"></script>
+
+    <script type="text/javascript">
+      submission = () => {
+        // var fName = document.getElementById("inputFirstName").value;
+        // var lName = document.getElementById("inputLastName").value;
+        // var mob = document.getElementById("inputMobile").value;
+        // var add = document.getElementById("inputAddress").value;
+        // var add2 = document.getElementById("inputAddress2").value;
+        // var state = document.getElementById("inputState").value;
+        // var city = document.getElementById("inputCity").value;
+        // var zip = document.getElementById("inputZip").value;
+
+        // console.log(document.getElementById("inputFirstName").value);
+        // console.log(fName);
+        // console.log("testing fName");
+        window.parent.postMessage(
+          JSON.stringify({
+            event_code: "ym-client-event",
+            data: JSON.stringify({
+              event: {
+                code: "data",
+                data: {
+                  pay: "done",
+                },
+              },
+            }),
+          }),
+          "*"
+        );
+      };
+    </script>
+  </body>
+</html>
